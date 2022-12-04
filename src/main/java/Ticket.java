@@ -5,7 +5,7 @@ public class Ticket implements Comparable<Ticket> {
     private String to;
     private int timeWay;
 
-    public Ticket(int id, int price, String from, String to, int TimeWay) {
+    public Ticket(int id, int price, String from, String to, int timeWay) {
         this.id = id;
         this.price = price;
         this.from = from;
@@ -31,10 +31,6 @@ public class Ticket implements Comparable<Ticket> {
 
     public int getTimeWay() {
         return timeWay;
-    }
-
-    public void setTimeWay(int timeWay) {
-        this.timeWay = timeWay;
     }
 
     @Override

@@ -1,7 +1,13 @@
+import java.util.Comparator;
+
 public class TicketRepository {
     private Ticket[] tickets = new Ticket[0];
 
-    public Ticket[] findAll() {
+    public Ticket[] findAllComparator(String from, String to, Comparator<Ticket> comparator) {
+        return tickets;
+    }
+
+    public Ticket[] findAll(String from, String to) {
         return tickets;
     }
 
@@ -41,6 +47,14 @@ public class TicketRepository {
         }
         tickets = tmp;
         return null;
+    }
+
+    public Ticket[] findAllComparator() {
+        return tickets;
+    }
+
+    public Ticket[] findAll() {
+        return tickets;
     }
 }
 
