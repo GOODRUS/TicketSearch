@@ -6,6 +6,7 @@ public class TicketManagerTest {
 
     TicketRepository repo = new TicketRepository();
     TicketManager manager = new TicketManager(repo);
+    FastComparator timeComparator = new FastComparator();
 
     Ticket ticket1 = new Ticket(15, 600, "MOW", "SVX", 90);
     Ticket ticket2 = new Ticket(18, 470, "MOW", "SVX", 120);
@@ -19,6 +20,7 @@ public class TicketManagerTest {
     Ticket ticket10 = new Ticket(64, 530, "MOW", "SVX", 110);
     Ticket ticket11 = new Ticket(79, 455, "MOW", "SVX", 125);
     Ticket ticket12 = new Ticket(112, 4450, "MOW", "RSX", 1120);
+    Ticket ticket13 = new Ticket(81, 455, "MOW", "SVX", 125);
 
     @Test
     public void shouldFindSomeTickets() {
@@ -127,4 +129,32 @@ public class TicketManagerTest {
 
         assertArrayEquals(expected, actual);
     }
+
+    /*
+    Тест для сортировки билетов по времени пути
+     */
+
+    @Test
+    public void shouldFindFastestWayTicket() {
+
+        manager.add(ticket1);
+        manager.add(ticket2);
+        manager.add(ticket3);
+        manager.add(ticket4);
+        manager.add(ticket5);
+        manager.add(ticket6);
+        manager.add(ticket7);
+        manager.add(ticket8);
+        manager.add(ticket9);
+        manager.add(ticket10);
+        manager.add(ticket11);
+        manager.add(ticket12);
+        manager.add(ticket13);
+
+        Ticket[] expected = {ticket1, ticket9, ticket10, ticket2, ticket11, ticket13};
+        Ticket[] actual = manager.searchByComparator("MOW", "SVX", timeComparator);
+
+        assertArrayEquals(expected, actual);
+    }
 }
+
